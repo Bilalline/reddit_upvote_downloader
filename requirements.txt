@@ -1,0 +1,12 @@
+praw==7.7.1
+python-telegram-bot==13.7
+python-dotenv==0.19.0
+requests==2.31.0
+tqdm==4.65.0
+asyncpraw==7.8.1
+pyTelegramBotAPI==4.14.0
+moviepy==1.0.3
+SQLAlchemy==2.0.23
+aiohttp==3.9.1
+aiosqlite==0.17.0
+httpx==0.25.2 

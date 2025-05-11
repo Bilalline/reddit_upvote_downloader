@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  reddit-telegram-bot:
+    build: .
+    container_name: reddit_telegram_bot
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - REDDIT_CLIENT_ID=${REDDIT_CLIENT_ID}
+      - REDDIT_CLIENT_SECRET=${REDDIT_CLIENT_SECRET}
+      - REDDIT_USERNAME=${REDDIT_USERNAME}
+      - REDDIT_PASSWORD=${REDDIT_PASSWORD}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+      - SUBREDDIT_NAME=${SUBREDDIT_NAME:-all}
+      - POST_LIMIT=${POST_LIMIT:-10}
+      - SAVE_FILES=${SAVE_FILES:-true}
+      - MAX_FILE_SIZE=${MAX_FILE_SIZE:-52428800}
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    # Удаляем user: "1000:1000", так как это может вызывать проблемы с правами 
